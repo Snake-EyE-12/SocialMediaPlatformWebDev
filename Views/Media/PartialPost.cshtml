@@ -1,0 +1,35 @@
+﻿@using System.Security.Claims;
+@model Post
+
+
+
+<div>
+
+	<div class="row">
+		<div class="col-4">
+			<img src="@Model.Image" width="270" />
+		</div>
+		<div class="col-4">
+			@Model.Description
+
+			<form asp-controller="Media" asp-action="MyPage">
+				<input name="id" type="hidden" value="@Model.MatchingID" />
+				<button class="btn btn-outline-success" type="submit">Posted By: @Model.senderUsername</button>
+			</form>
+		</div>
+	</div>
+
+	@* <div class="col-4">
+		<img src="@Model.Image" width="200"/>
+
+	</div>
+	<div class="col-5">
+		@Model.Description
+	
+		<form asp-controller="Media" asp-action="MyPage">
+			<input name="id" type="hidden" value="@Model.MatchingID" />
+		<button type="submit">Posted By: @Model.senderUsername</button>
+		</form>
+
+	</div> *@
+</div>

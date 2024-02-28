@@ -1,0 +1,20 @@
+﻿@model Profile
+
+<form asp-controller="Media" asp-action="MyPage">
+	<tr class="table-active">
+                <th scope="row"></th>
+                <td>
+			<img src="@Model.ProfilePicture" height="70" class="d-block" />
+				</td>
+                <td>
+					<input type="hidden" name="id" value="@Model.Id">
+					<button class="btn btn-outline-success" type="submit">
+						@Model.Name
+					</button>
+
+				</td>
+            </tr>
+</form>
+
+@*
+*@

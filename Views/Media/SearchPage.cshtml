@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Profile>
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Users</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+	@foreach(Profile p in @Model)
+        {
+			<partial name="_PartialSearch.cshtml" for="@p" />
+            
+
+        }
+
+    </tbody>
+</table>
+@*
+<div class="row">
+</div>
+
+		<div class="col-12">
+		</div>
+
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Picture</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-active">
+      <th scope="row">Active</th>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+
+
+*@

@@ -1,0 +1,56 @@
+﻿@model Profile
+
+<form asp-controller="Media" asp-action="Edit" method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Edit Profile</h2>
+			<hr />
+			<div asp-validation-summary="All" class="text-danger"></div>
+		</div>
+
+
+		<div class="mb-3">
+			<label asp-for="Name"></label>
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" class="error-messages"></span>
+
+		</div>
+		<div class="mb-3">
+			<label asp-for="Age"></label>
+			<input asp-for="Age" class="form-control" />
+			<span asp-validation-for="Age" class="error-messages"></span>
+
+		</div>
+		<div class="mb-3">
+			<label asp-for="FavoriteColor"></label>
+			<input asp-for="FavoriteColor" class="form-control" />
+			<span asp-validation-for="FavoriteColor" class="error-messages"></span>
+
+		</div>
+		<div class="mb-3">
+			<label asp-for="FavoriteHobby"></label>
+			<input asp-for="FavoriteHobby" class="form-control" />
+			<span asp-validation-for="FavoriteHobby" class="error-messages"></span>
+
+		</div>
+		<div class="mb-3">
+			<label asp-for="ProfilePicture"></label>
+			<input asp-for="ProfilePicture" class="form-control" />
+			<span asp-validation-for="ProfilePicture" class="error-messages"></span>
+
+		</div>
+		
+		<input asp-for="Id" type="hidden" />
+		<input asp-for="Username" type="hidden" />
+
+		<button type="submit" class="btn btn-primary">
+			Update
+
+		</button>
+		<div name="lblMsg" class="text-danger">
+			@ViewData["Error"]
+		</div>
+	</div>
+
+
+</form>

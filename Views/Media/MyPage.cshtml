@@ -1,0 +1,76 @@
+﻿@using System.Security.Claims;
+@model PostsWithProfile
+
+
+<div class="row">
+	<div class="col-4" class="text-centered">
+		<div class="text-centered">
+			<img src=@Model.profile.ProfilePicture width="300"/>
+		</div>
+		<div class="text-centered">
+			<b>Name:</b> @Model.profile.Name
+		</div>
+		<div class="text-centered">
+			<b>Age:</b> @Model.profile.Age
+		</div>
+		<div class="text-centered">
+			<b>Color:</b> @Model.profile.FavoriteColor
+		</div>
+		<div class="text-centered">
+			<b>Hobby:</b> @Model.profile.FavoriteHobby
+		</div>
+		<div>
+			@if (Model.profile.Username == User.FindFirstValue(ClaimTypes.NameIdentifier))
+			{
+				<form asp-action="Edit" , asp-controller="Media" method="get">
+					<input name="Id" type="hidden" value="@Model.profile.Id" />
+
+					<button class ="btn btn-outline-success" type="submit">Edit</button>
+				</form>
+			}
+		</div>
+	</div>
+	
+	<div class="col-8">
+		
+		<div>
+			<br />
+		@if (User.FindFirstValue(ClaimTypes.NameIdentifier) != null)
+		{
+				if (User.FindFirstValue(ClaimTypes.NameIdentifier) == Model.profile.Username)
+				{
+					<div class="row">
+						<div class="col-6">
+							<form asp-controller="Media" asp-action="MakePost">
+								<input name="receiver" value="@Model.profile.Username" type="hidden">
+								<button class="btn btn-outline-primary">Create Own Post</button>
+							</form>
+						</div>
+						<div class="col-6">
+							<form asp-controller="Media" asp-action="SeePosts">
+								<button class="btn btn-outline-primary">View All My Posts</button>
+							</form>
+						</div>
+					</div>
+					
+				}
+				else
+				{
+
+					<form asp-controller="Media" asp-action="MakePost">
+						<input name="receiver" value="@Model.profile.Username" type="hidden">
+						<button class="btn btn-outline-primary">Leave Post</button>
+					</form>
+				}
+			}
+		<div />
+			<br />
+		<div row>
+			@foreach(var post in Model.posts)
+			{
+				<br />
+				<partial name="PartialPost.cshtml" for="@post" />
+			}
+		</div>
+	</div>
+</div>
